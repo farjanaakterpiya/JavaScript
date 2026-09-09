@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>বর্ডার গার্ড বাংলাদেশ | BGB</title>
+    <style>
+      :root {
+        --primary: #0d3b66;
+        --primary-dark: #0a2c4f;
+        --secondary: #d8a31a;
+        --accent: #f5f7fa;
+        --text: #1d1d1f;
+        --muted: #5d6777;
+        --border: #dfe5ee;
+        --green: #0d7a4b;
+        --red: #b3261e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: #f2f5f8;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        background: var(--primary-dark);
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 42px;
+        gap: 12px;
+      }
+
+      .top-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .top-links a {
+        color: #eaf3ff;
+        opacity: 0.92;
+      }
+
+      .header {
+        background: linear-gradient(180deg, #ffffff 0%, #edf4fb 100%);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo {
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f7d66b, #d8a31a);
+        position: relative;
+        border: 4px solid #fff;
+        box-shadow: 0 0 0 2px var(--primary);
+      }
+
+      .logo::before,
+      .logo::after {
+        content: "";
+        position: absolute;
+        inset: 22px 18px 22px 18px;
+        border: 3px solid var(--primary-dark);
+        border-radius: 50%;
+      }
+
+      .logo::after {
+        inset: 31px 27px 31px 27px;
+        background: #fff;
+        border-color: transparent;
+      }
+
+      .brand-text h1 {
+        margin: 0;
+        font-size: clamp(25px, 2.5vw, 36px);
+        color: var(--primary-dark);
+        line-height: 1.1;
+      }
+
+      .brand-text p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        letter-spacing: 0.3px;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .search-box {
+        width: 250px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        color: var(--muted);
+      }
+
+      .search-box input {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 14px;
+      }
+
+      .nav {
+        background: var(--primary);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        min-height: 58px;
+      }
+
+      .menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .menu > li > a {
+        color: #fff;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        min-height: 58px;
+      }
+
+      .menu > li > a::after {
+        content: "▾";
+        margin-left: 7px;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .menu-button {
+        color: #fff;
+        font-weight: 700;
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        padding-left: 18px;
+      }
+
+      .hero {
+        padding: 28px 0 10px;
+      }
+
+      .hero-box {
+        background: linear-gradient(135deg, #eaf1f8, #dfeafb);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(16, 36, 64, 0.08);
+        border: 1px solid var(--border);
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+      }
+
+      .hero-content {
+        padding: 32px 28px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #e8f5ee;
+        color: var(--green);
+        border: 1px solid #b7e0c7;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .hero-content h2 {
+        margin: 0 0 14px;
+        font-size: clamp(28px, 3vw, 46px);
+        line-height: 1.15;
+        color: var(--primary-dark);
+      }
+
+      .hero-content p {
+        margin: 0 0 20px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 22px;
+        border-radius: 10px;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .btn.primary {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn.secondary {
+        background: #fff;
+        color: var(--primary);
+        border: 1px solid var(--border);
+      }
+
+      .hero-visual {
+        background: linear-gradient(135deg, #ebf1ff, #f9ebca);
+        position: relative;
+        min-height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .flag-shape {
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #1d4f91 0%, #0d3b66 100%);
+        position: relative;
+        box-shadow: inset 0 0 0 8px rgba(255,255,255,0.14);
+      }
+
+      .flag-shape::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #2b7a53 0 50%, #f4d35e 50% 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        border-radius: 20px;
+      }
+
+      .flag-shape::after {
+        content: "";
+        position: absolute;
+        width: 76px;
+        height: 76px;
+        background: #f5f5f5;
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 10px rgba(255,255,255,0.2);
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 0.8fr;
+        gap: 24px;
+        padding: 24px 0 40px;
+      }
+
+      .panel {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(180deg, #ffffff, #f8fafc);
+      }
+
+      .panel-header h3 {
+        margin: 0;
+        font-size: 24px;
+        color: var(--primary-dark);
+      }
+
+      .link-more {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .notice-list,
+      .link-list,
+      .service-grid,
+      .mini-grid {
+        padding: 18px 20px 8px;
+      }
+
+      .notice-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 0;
+        border-bottom: 1px solid #edf1f5;
+      }
+
+      .notice-item:last-child {
+        border-bottom: none;
+      }
+
+      .notice-text {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .notice-date {
+        white-space: nowrap;
+        font-size: 13px;
+        color: var(--muted);
+        padding-top: 4px;
+      }
+
+      .quick-links {
+        padding: 16px 20px 20px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 14px;
+      }
+
+      .quick-card {
+        background: linear-gradient(180deg, #f8fbff, #edf4ff);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px 14px;
+        text-align: center;
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      .sidebar-block {
+        display: grid;
+        gap: 20px;
+      }
+
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 14px;
+      }
+
+      .service-box {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        min-height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 16px;
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .mini-item {
+        background: linear-gradient(180deg, #fff7e6, #fffaf0);
+        padding: 14px 16px;
+        border: 1px solid #f0dfb1;
+        border-radius: 12px;
+        font-weight: 700;
+        color: #66510b;
+      }
+
+      .secondary-section {
+        padding: 0 0 50px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .feature-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .feature-image {
+        height: 170px;
+        background: linear-gradient(135deg, #dfeafb, #f3d7a2);
+        position: relative;
+      }
+
+      .feature-image::before {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .feature-body {
+        padding: 18px 18px 20px;
+      }
+
+      .feature-body h4 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        color: var(--primary-dark);
+      }
+
+      .feature-body p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .footer {
+        background: var(--primary-dark);
+        color: #eaf3ff;
+        padding: 32px 0 24px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr;
+        gap: 24px;
+      }
+
+      .footer h4 {
+        margin: 0 0 14px;
+        font-size: 18px;
+        color: #fff;
+      }
+
+      .footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+        color: #dceafc;
+      }
+
+      .footer small {
+        display: block;
+        color: #dceafc;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        margin-top: 24px;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .main-grid,
+        .footer-grid,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .header-inner,
+        .nav-inner,
+        .topbar-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .search-box {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .menu {
+          gap: 12px;
+        }
+
+        .menu > li > a {
+          min-height: auto;
+          padding: 10px 0;
+        }
+
+        .quick-links,
+        .service-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-content {
+          padding: 22px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</div>
+        <div class="top-links">
+          <a href="#">বাংলা</a>
+          <a href="#">English</a>
+          <a href="#">বিজিবি</a>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo" aria-label="BGB logo"></div>
+          <div class="brand-text">
+            <h1>বর্ডার গার্ড বাংলাদেশ</h1>
+            <p>Border Guard Bangladesh</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="search-box">
+            <span>🔍</span>
+            <input type="text" placeholder="Search" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <div class="container nav-inner">
+        <ul class="menu">
+          <li><a href="#">বিজিবি সম্পর্কিত</a></li>
+          <li><a href="#">সেবা সমূহ</a></li>
+          <li><a href="#">প্রকাশনা</a></li>
+          <li><a href="#">ই-সেবা</a></li>
+        </ul>
+        <div class="menu-button">আরও</div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-box">
+          <div class="hero-inner">
+            <div class="hero-content">
+              <div class="badge">সর্বশেষ সংবাদ</div>
+              <h2>বাংলাদেশের নিরাপত্তা ও সীমানা রক্ষায় বিজিবি</h2>
+              <p>
+                সীমানা নিরাপত্তা, মানব পাচার প্রতিরোধ, অবৈধ অনুপ্রবেশ নিয়ন্ত্রণ এবং
+                জনসেবা প্রদানের মাধ্যমে জাতির স্বার্থ রক্ষা করছে বর্ডার গার্ড বাংলাদেশ।
+              </p>
+              <div class="hero-actions">
+                <a href="#" class="btn primary">আরও জানুন</a>
+                <a href="#" class="btn secondary">নোটিশ দেখুন</a>
+              </div>
+            </div>
+            <div class="hero-visual" aria-label="BGB banner illustration">
+              <div class="flag-shape"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="container main-grid">
+      <section class="panel">
+        <div class="panel-header">
+          <h3>নোটিশ বোর্ড</h3>
+          <a href="#" class="link-more">সকল</a>
+        </div>
+
+        <div class="notice-list">
+          <div class="notice-item">
+            <div class="notice-text">Invitation of Tenders (National) – Purchase of various types of spare parts</div>
+            <div class="notice-date">05-09-2026</div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-text">Invitation of Tenders (National) – Purchase of 380 Vehicles Tyre</div>
+            <div class="notice-date">05-09-2026</div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-text">E-Tender Notice – Desktop Computer and Laptop Computer</div>
+            <div class="notice-date">30-08-2026</div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-text">বিজিবি অফিসে নিয়োগ বিজ্ঞপ্তি ও প্রয়োজনীয় তথ্য</div>
+            <div class="notice-date">22-08-2026</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidebar-block">
+        <section class="panel">
+          <div class="panel-header">
+            <h3>দ্রুত লিঙ্ক</h3>
+          </div>
+          <div class="quick-links">
+            <div class="quick-card">প্রকাশনা</div>
+            <div class="quick-card">চাকরি</div>
+            <div class="quick-card">ই-সেবা</div>
+            <div class="quick-card">সামাজিক</div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h3>সেবা সমূহ</h3>
+          </div>
+          <div class="service-grid">
+            <div class="service-box">সীমানা রক্ষা</div>
+            <div class="service-box">মানব পাচার</div>
+            <div class="service-box">চোরাচালান</div>
+            <div class="service-box">প্রশাসনিক</div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <section class="secondary-section">
+      <div class="container">
+        <div class="panel">
+          <div class="panel-header">
+            <h3>বিজিবি কার্যক্রম</h3>
+            <a href="#" class="link-more">সব দেখুন</a>
+          </div>
+
+          <div class="cards" style="padding: 20px;">
+            <article class="feature-card">
+              <div class="feature-image"></div>
+              <div class="feature-body">
+                <h4>স্বাধীনতা যুদ্ধে অবদান</h4>
+                <p>বিজিবির ইতিহাস, বীরত্ব ও জাতীয় সেবার অনন্য দৃষ্টান্ত তুলে ধরা হয়েছে।</p>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-image"></div>
+              <div class="feature-body">
+                <h4>নীতিমালা ও প্রকাশনা</h4>
+                <p>আইন, নীতিমালা, প্রতিবেদন ও প্রকাশনাসমূহ নিয়ে সুশৃঙ্খল তথ্যবহুল পোর্টাল।</p>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-image"></div>
+              <div class="feature-body">
+                <h4>উদ্ভাবনী কার্যক্রম</h4>
+                <p>সেবার মানোন্নয়ন ও প্রযুক্তি নির্ভর উদ্ভাবনী উদ্যোগের ওপর জোর দেওয়া হয়।</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h4>বর্ডার গার্ড বাংলাদেশ</h4>
+            <ul>
+              <li>সীমানা নিরাপত্তা</li>
+              <li>বর্ডার ম্যানেজমেন্ট</li>
+              <li>জনসেবা</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>দ্রুত লিঙ্ক</h4>
+            <ul>
+              <li>প্রতিরক্ষা মন্ত্রণালয়</li>
+              <li>স্বরাষ্ট্র মন্ত্রণালয়</li>
+              <li>বাংলাদেশ জাতীয় তথ্য বাতায়ন</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>সেবা সমূহ</h4>
+            <ul>
+              <li>চাকরির বিজ্ঞপ্তি</li>
+              <li>নোটিশ ও আদেশ</li>
+              <li>ই-সেবা</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>জরুরি সেবা</h4>
+            <ul>
+              <li>সরকারি তথ্য ও সেবা ৩৩৩</li>
+              <li>জরুরি সেবা ৯৯৯</li>
+              <li>ফায়ার সার্ভিস ১০২</li>
+            </ul>
+          </div>
+        </div>
+
+        <small>সাইটটি শেষ হাল-নাগাদ করা হয়েছে: শনিবার, ৫ সেপ্টেম্বর, ২০২৬</small>
+      </div>
+    </footer>
+  </body>
+</html>
