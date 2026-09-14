@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .class{
+            background-color: blue;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="show"></div>
+    <form action=""name="myform">
+        
+        
+        <input type="text" name="name" placeholder="Enter full name"/><br>
+        <textarea name="address" placeholder="Enter address"></textarea><br>
+
+        Gender<br>
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female<br>
+        <select name="district" id="">
+            <option selected disabled value="">Select one</option>
+            <option>Dhaka</option>
+            <option>Syllet</option>
+            <option>Comilla</option>
+            <option>Pabna</option>
+        </select><br><br>
+        Hobbies<br>
+        <input type="checkbox" class="hobbies" value="Football" >Football
+        <input type="checkbox" class="hobbies" value="Cricket" >Cricket
+        <input type="checkbox" class="hobbies" value="Hocky" >Hocky<br>
+
+
+        <input type="button" onclick="mywindow()" name="submit" value="OPEN"/>
+        <input type="button" onclick="mywindow.close()" name="submit" value="CLOSE"/>
+
+        
+    </form>
+    <script>
+        function mywindow(){
+            
+            let name = document.myform.name.value;
+            let address = document.myform.address.value;
+            
+            let gender = document.myform.gender.value;
+            let district = document.myform.district.value;
+            let hobbies = document.getElementsByClassName("hobbies");
+            let hobbiesOutput = "";
+            for(let i =0; i<hobbies.length; i++){
+                if (hobbies[i].checked){
+                    hobbiesOutput += hobbies[i].value +",";
+                }
+            }
+            // console.log(hobbies);
+            let output = "<div class='blue'>";
+                output+= "Name:" + name+"<br>";
+                output += "Address:" + address +"<br>";
+                 output+= "Gender:" + gender+"<br>";
+                  output+= "District:" + district+"<br>";
+                   output+= "Hobbies:" + hobbiesOutput+"<br>";
+               
+                 output+="</div>";
+                
+                // document.getElementById("show").innerHTML=output;
+                
+                mywindow = window.open("","", "height:300,width:400");
+                mywindow.document.write(output);
+            }
+    </script>
+</body>
+</html>
