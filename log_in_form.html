@@ -14,31 +14,55 @@
     </form>
     
     <script>
-        function validation(){
-            //value getting
+        // function validation(){
+        //     //value getting
+        //     let username = document.myform.username.value;
+        //     let password = document.myform.password.value;
+        //     let valid = false;
+        //     if(username.length<6){
+        //         alert("Username must be at least 6 character");
+        //         valid= false;
+        //         return false;
+        //     } else{valid= true}
+        //     // if(password.length>8){
+        //     //     alert("password within 8 character long");
+        //     //     valid = false;
+        //     //     return false;
+        //     if(password ===""){
+        //         alert("Password must be enter");
+        //         valid = false;
+        //         return false;
+        //     } else{
+        //         valid = true
+        //     }
+        //     if (valid == false){
+        //         alert("Username or Password not validate");
+        //     } else{
+        //         alert("All are validate");
+        //     }
+        // }
+
+        function validation (){
             let username = document.myform.username.value;
             let password = document.myform.password.value;
             let valid = false;
-            if(username.length<6){
-                alert("Username must be at least 6 character");
+            if(username.length <6){
+                alert("Username must be at least 6 charcter");
                 valid= false;
                 return false;
-            } else{valid= true}
-            // if(password.length>8){
-            //     alert("password within 8 character long");
-            //     valid = false;
-            //     return false;
-            if(password ===""){
-                alert("Password must be enter");
+
+            }
+            else{valid =true}
+            if (password=== ""){
+                alert ("Password must be enter");
                 valid = false;
                 return false;
-            } else{
-                valid = true
-            }
-            if (valid == false){
-                alert("Username or Password not validate");
-            } else{
-                alert("All are validate");
+
+            } else {valid = true}
+            if(valid == false){
+                alert("Username or password not validate";)
+            } else {
+                alert ("All are validate");
             }
         }
     </script>

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         // function test_prime(n){
         //     if(n===1){
         //         return "Not a prime number";
@@ -46,8 +46,32 @@
             }
         }
         document.write(test_prime(17));
+        
 
 
-    </script>
+    </script> -->
+
+
+<script>
+    function test_prime(n){
+        if (n===1){
+            return "Not a prime number";
+        }
+        else if (n===2){
+            return n+"is a prime number";
+        }
+        else{
+            for(let x =2;x<n; x++){
+                if(n%x===0){
+                    return "Not is a prime number";
+                }
+            }
+            return n+ "is a prime number";
+        }
+    }
+    document.write(test_prime(11));
+</script>
+
+
 </body>
 </html>
