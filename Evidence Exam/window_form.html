@@ -17,7 +17,22 @@
             
             let output="";
             output += "Name:" +name + "<br>";
-            let mywindow =window.open("","", "height:300, width:300");
+            output+= "Contact:" +contact + "<br>";
+            output+= "Remarks:" +remarks + "<br>";
+            output+= "Gender:" +gender + "<br>";
+            output+= "Location:" +location + "<br>";
+            let checkboxOutput ="";
+            const checkbox = document.getElementsByClassName("checkbox");
+            // console.log(checkbox.length);
+            for(let i=0; i<checkbox.length; i++){
+                if(checkbox[i].checked){
+                    checkboxOutput+=checkbox[i].value + ",";
+                }
+            }
+
+
+
+            mywindow =window.open("","", "height:300px, width:300px");
             mywindow.document.write(output);
            
             
@@ -27,7 +42,7 @@
 
 
 
-    <form action="myform" class="">
+    <form action="" name="myform">
         <input type="text" name="name" placeholder="Enter your name"><br>
         <input type="text" name="contact" placeholder="Enter your contact"><br>
         <textarea name="remarks" id="">remarks</textarea><br>
@@ -39,13 +54,14 @@
         <input type="checkbox" name="multiple courses" value="IAD">IAD
         <input type="checkbox" name="multiple courses" value="DDD">DDD
         <input type="checkbox" name="multiple courses" value="ESAD">ESAD<br>
-        <select name="Location">
+        <select name="location">
+            <option value="" >select one</option>
             <option value="">Like</option>
             <option value="">Banani</option>
             <option value="">Dhanmondi</option>
             <option value="">Mirpur</option>
         </select><br>
-        <input type="button" onclick="mywindow()" value="OPEN">
+        <input type="button" onclick="mywindow()" name="submit" value="OPEN">
     </form>
 </body>
 </html>
