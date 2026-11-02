@@ -23,9 +23,15 @@ Version 2.0
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+<<<<<<< HEAD
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`pwad73_sampledb` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `pwad73_sampledb`;
+=======
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`pwadsampledb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `pwadsampledb`;
+>>>>>>> 818f6d1ab70d98616db90cf3ce89b1b948b22f8c
 
 /*Table structure for table `customers` */
 

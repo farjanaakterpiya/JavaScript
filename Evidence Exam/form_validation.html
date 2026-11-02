@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Form Validation</h3>
+    <form action="" name="myform" onsubmit="return validate()">
+        <input type="text" name="email"><br>
+        <input type="password" name="password"><br>
+        <input type="submit" name="submit">
+    </form>
+
+    <script>
+        function validate(){
+            // return false;
+            // alert("you have submitted");
+            let email = document.myform.email.value;
+            let password = document.myform.password.value;
+            //alert(email);
+            let pattern = /^[a-z]+@[a-z]+\.[a-z]{3,4}$/;
+            if(email.search(pattern)== -1){
+                alert("Invalid email address");
+                return false;
+            }else{
+                alert("valid email");
+            }
+            if(password.search(/^[a-zA-Z0-9]{4,8}$/)==-1){
+                alert("Invalid password");
+                return false;
+            }else{
+                alert("valid password");
+            }
+        }
+    </script>
+</body>
+</html>
